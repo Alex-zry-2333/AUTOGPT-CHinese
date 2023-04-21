@@ -8,7 +8,9 @@
 
 <p align="center">
 这个项目是基于Auto-GPT原作者的0.22版本，应大家要求，我快速制作了中文的汉化版本，基本运行顺利，还有些小瑕疵，会不断更新修改，欢迎大家关注，还请大家多支持！下面的内容就不过多翻译了，保持与原作者一致！
-如果大家希望支持我，还请给我点个小星星，谢谢！
+如果大家希望支持我，还请给我点个小星星，谢谢！也可以通过微信与我们交流
+
+![微信](https://www.notion.so/hossie/828a0874e1c2472887859437eaf9cf00?pvs=4#dd5a44b3d0d449ad92215c24db9d8517.png)
 
 </div>
 
@@ -464,14 +466,6 @@ As an autonomous experiment, Auto-GPT may generate content or take actions that 
 
 By using Auto-GPT, you agree to indemnify, defend, and hold harmless the developers, contributors, and any affiliated parties from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from your use of this software or your violation of these terms.
 
-## 🐦 Connect with Us on Twitter
-
-Stay up-to-date with the latest news, updates, and insights about Auto-GPT by following our Twitter accounts. Engage with the developer and the AI's own account for interesting discussions, project updates, and more.
-
-- **Developer**: Follow [@siggravitas](https://twitter.com/siggravitas) for insights into the development process, project updates, and related topics from the creator of Entrepreneur-GPT.
-- **Entrepreneur-GPT**: Join the conversation with the AI itself by following [@En_GPT](https://twitter.com/En_GPT). Share your experiences, discuss the AI's outputs, and engage with the growing community of users.
-
-We look forward to connecting with you and hearing your thoughts, ideas, and experiences with Auto-GPT. Join us on Twitter and let's explore the future of AI together!
 
 <p align="center">
   <a href="https://star-history.com/#Realhossie/auto-gpt-chinese&Date">
