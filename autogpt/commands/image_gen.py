@@ -36,7 +36,7 @@ def generate_image(prompt: str, size: int = 256) -> str:
     # SD WebUI
     elif CFG.image_provider == "sdwebui":
         return generate_image_with_sd_webui(prompt, filename, size)
-    return "No Image Provider Set"
+    return "没有设置图片生成器"
 
 
 def generate_image_with_hf(prompt: str, filename: str) -> str:
@@ -54,7 +54,7 @@ def generate_image_with_hf(prompt: str, filename: str) -> str:
     )
     if CFG.huggingface_api_token is None:
         raise ValueError(
-            "You need to set your Hugging Face API token in the config file."
+            "你需要在配置文件中设置你的Hugging Face API token."
         )
     headers = {
         "Authorization": f"Bearer {CFG.huggingface_api_token}",
@@ -70,11 +70,11 @@ def generate_image_with_hf(prompt: str, filename: str) -> str:
     )
 
     image = Image.open(io.BytesIO(response.content))
-    print(f"Image Generated for prompt:{prompt}")
+    print(f"通过prompt生成图片:{prompt}")
 
     image.save(path_in_workspace(filename))
 
-    return f"Saved to disk:{filename}"
+    return f"保存至磁盘:{filename}"
 
 
 def generate_image_with_dalle(prompt: str, filename: str, size: int) -> str:
@@ -94,7 +94,7 @@ def generate_image_with_dalle(prompt: str, filename: str, size: int) -> str:
     if size not in [256, 512, 1024]:
         closest = min([256, 512, 1024], key=lambda x: abs(x - size))
         print(
-            f"DALL-E only supports image sizes of 256x256, 512x512, or 1024x1024. Setting to {closest}, was {size}."
+            f"DALL-E 只支持图片尺寸 256x256, 512x512, 或 1024x1024. 当前设置 {closest}, 为 {size}."
         )
         size = closest
 
@@ -105,14 +105,14 @@ def generate_image_with_dalle(prompt: str, filename: str, size: int) -> str:
         response_format="b64_json",
     )
 
-    print(f"Image Generated for prompt:{prompt}")
+    print(f"通过prompt生成图片:{prompt}")
 
     image_data = b64decode(response["data"][0]["b64_json"])
 
     with open(path_in_workspace(filename), mode="wb") as png:
         png.write(image_data)
 
-    return f"Saved to disk:{filename}"
+    return f"保存至磁盘:{filename}"
 
 
 def generate_image_with_sd_webui(
@@ -154,7 +154,7 @@ def generate_image_with_sd_webui(
         },
     )
 
-    print(f"Image Generated for prompt:{prompt}")
+    print(f"通过prompt生成图片:{prompt}")
 
     # Save the image to disk
     response = response.json()
@@ -162,4 +162,4 @@ def generate_image_with_sd_webui(
     image = Image.open(io.BytesIO(b64))
     image.save(path_in_workspace(filename))
 
-    return f"Saved to disk:{filename}"
+    return f"保存至磁盘:{filename}"

@@ -5,7 +5,7 @@ try:
     from playwright.sync_api import sync_playwright
 except ImportError:
     print(
-        "Playwright not installed. Please install it with 'pip install playwright' to use."
+        "Playwright没有安装. 请使用 'pip install playwright' 安装."
     )
 from bs4 import BeautifulSoup
 
@@ -39,7 +39,7 @@ def scrape_text(url: str) -> str:
             text = "\n".join(chunk for chunk in chunks if chunk)
 
         except Exception as e:
-            text = f"Error: {str(e)}"
+            text = f"错误: {str(e)}"
 
         finally:
             browser.close()
@@ -72,7 +72,7 @@ def scrape_links(url: str) -> str | list[str]:
             formatted_links = format_hyperlinks(hyperlinks)
 
         except Exception as e:
-            formatted_links = f"Error: {str(e)}"
+            formatted_links = f"错误: {str(e)}"
 
         finally:
             browser.close()

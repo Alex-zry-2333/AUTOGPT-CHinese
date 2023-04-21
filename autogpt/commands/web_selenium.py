@@ -28,8 +28,8 @@ CFG = Config()
 
 @command(
     "browse_website",
-    "Browse Website",
-    '"url": "<url>", "question": "<what_you_want_to_find_on_website>"',
+    "浏览网页",
+    '"url": "<url>", "问题": "<what_you_want_to_find_on_website>"',
 )
 def browse_website(url: str, question: str) -> tuple[str, WebDriver]:
     """Browse a website and return the answer and links to the user
@@ -50,7 +50,7 @@ def browse_website(url: str, question: str) -> tuple[str, WebDriver]:
     if len(links) > 5:
         links = links[:5]
     close_browser(driver)
-    return f"Answer gathered from website: {summary_text} \n \n Links: {links}", driver
+    return f"从网页中获取的回答: {summary_text} \n \n 链接: {links}", driver
 
 
 def scrape_text_with_selenium(url: str) -> tuple[WebDriver, str]:

@@ -107,7 +107,7 @@ def get_response(
 
         # Most basic check if the URL is valid:
         if not url.startswith("http://") and not url.startswith("https://"):
-            raise ValueError("Invalid URL format")
+            raise ValueError("无效的URL格式")
 
         sanitized_url = sanitize_url(url)
 
@@ -115,17 +115,17 @@ def get_response(
 
         # Check if the response contains an HTTP error
         if response.status_code >= 400:
-            return None, f"Error: HTTP {str(response.status_code)} error"
+            return None, f"错误: HTTP {str(response.status_code)} 错误"
 
         return response, None
     except ValueError as ve:
         # Handle invalid URL format
-        return None, f"Error: {str(ve)}"
+        return None, f"错误: {str(ve)}"
 
     except requests.exceptions.RequestException as re:
         # Handle exceptions related to the HTTP request
         #  (e.g., connection errors, timeouts, etc.)
-        return None, f"Error: {str(re)}"
+        return None, f"错误: {str(re)}"
 
 
 def scrape_text(url: str) -> str:
@@ -141,7 +141,7 @@ def scrape_text(url: str) -> str:
     if error_message:
         return error_message
     if not response:
-        return "Error: Could not get response"
+        return "错误：无法获取反馈"
 
     soup = BeautifulSoup(response.text, "html.parser")
 
@@ -169,7 +169,7 @@ def scrape_links(url: str) -> str | list[str]:
     if error_message:
         return error_message
     if not response:
-        return "Error: Could not get response"
+        return "错误：无法获取反馈"
     soup = BeautifulSoup(response.text, "html.parser")
 
     for script in soup(["script", "style"]):
@@ -184,7 +184,7 @@ def create_message(chunk, question):
     """Create a message for the user to summarize a chunk of text"""
     return {
         "role": "user",
-        "content": f'"""{chunk}""" Using the above text, answer the following'
-        f' question: "{question}" -- if the question cannot be answered using the'
-        " text, summarize the text.",
+        "content": f'"""{chunk}""" 使用上述文本, 回答下面'
+        f' 问题: "{question}" -- 如果问题无法使用'
+        " 文本回答, 总结文本.",
     }

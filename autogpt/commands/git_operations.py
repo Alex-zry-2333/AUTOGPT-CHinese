@@ -10,10 +10,10 @@ CFG = Config()
 
 @command(
     "clone_repository",
-    "Clone Repository",
+    "克隆 Repository",
     '"repository_url": "<repository_url>", "clone_path": "<clone_path>"',
     CFG.github_username and CFG.github_api_key,
-    "Configure github_username and github_api_key.",
+    "配置github_username 和 github_api_key.",
 )
 def clone_repository(repository_url: str, clone_path: str) -> str:
     """Clone a GitHub repository locally.
@@ -30,6 +30,6 @@ def clone_repository(repository_url: str, clone_path: str) -> str:
     safe_clone_path = path_in_workspace(clone_path)
     try:
         Repo.clone_from(auth_repo_url, safe_clone_path)
-        return f"""Cloned {repository_url} to {safe_clone_path}"""
+        return f"""克隆 {repository_url} 至 {safe_clone_path}"""
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"

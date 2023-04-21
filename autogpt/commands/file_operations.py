@@ -47,7 +47,7 @@ def log_operation(operation: str, filename: str) -> None:
     # Create the log file if it doesn't exist
     if not os.path.exists(LOG_FILE_PATH):
         with open(LOG_FILE_PATH, "w", encoding="utf-8") as f:
-            f.write("File Operation Logger ")
+            f.write("文件操作记录器 ")
 
     append_to_file(LOG_FILE, log_entry, shouldLog=False)
 
@@ -100,7 +100,7 @@ def read_file(filename: str) -> str:
             content = f.read()
         return content
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"
 
 
 def ingest_file(
@@ -116,28 +116,28 @@ def ingest_file(
     :param overlap: The number of overlapping characters between chunks, default is 200
     """
     try:
-        print(f"Working with file {filename}")
+        print(f"操作文件 {filename}")
         content = read_file(filename)
         content_length = len(content)
-        print(f"File length: {content_length} characters")
+        print(f"文件长度: {content_length} 字符")
 
         chunks = list(split_file(content, max_length=max_length, overlap=overlap))
 
         num_chunks = len(chunks)
         for i, chunk in enumerate(chunks):
-            print(f"Ingesting chunk {i + 1} / {num_chunks} into memory")
+            print(f"注入chunk {i + 1} / {num_chunks} 至记忆")
             memory_to_add = (
-                f"Filename: {filename}\n" f"Content part#{i + 1}/{num_chunks}: {chunk}"
+                f"文件名: {filename}\n" f"内容分块#{i + 1}/{num_chunks}: {chunk}"
             )
 
             memory.add(memory_to_add)
 
-        print(f"Done ingesting {num_chunks} chunks from {filename}.")
+        print(f"完成注入 {num_chunks} chunks 从 {filename}.")
     except Exception as e:
-        print(f"Error while ingesting file '{filename}': {str(e)}")
+        print(f"注入文件错误 '{filename}': {str(e)}")
 
 
-@command("write_to_file", "Write to file", '"filename": "<filename>", "text": "<text>"')
+@command("write_to_file", "写入文件", '"文件名": "<filename>", "text": "<text>"')
 def write_to_file(filename: str, text: str) -> str:
     """Write text to a file
 
@@ -158,13 +158,13 @@ def write_to_file(filename: str, text: str) -> str:
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(text)
         log_operation("write", filename)
-        return "File written to successfully."
+        return "文件写入成功."
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"
 
 
 @command(
-    "append_to_file", "Append to file", '"filename": "<filename>", "text": "<text>"'
+    "append_to_file", "追加至文件", '"文件名": "<filename>", "text": "<text>"'
 )
 def append_to_file(filename: str, text: str, shouldLog: bool = True) -> str:
     """Append text to a file
@@ -184,12 +184,12 @@ def append_to_file(filename: str, text: str, shouldLog: bool = True) -> str:
         if shouldLog:
             log_operation("append", filename)
 
-        return "Text appended successfully."
+        return "文件追加成功."
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"
 
 
-@command("delete_file", "Delete file", '"filename": "<filename>"')
+@command("delete_file", "删除文件", '"文件名": "<filename>"')
 def delete_file(filename: str) -> str:
     """Delete a file
 
@@ -200,17 +200,17 @@ def delete_file(filename: str) -> str:
         str: A message indicating success or failure
     """
     if check_duplicate_operation("delete", filename):
-        return "Error: File has already been deleted."
+        return "错误: 文件已经删除."
     try:
         filepath = path_in_workspace(filename)
         os.remove(filepath)
         log_operation("delete", filename)
-        return "File deleted successfully."
+        return "文件删除成功."
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"
 
 
-@command("search_files", "Search Files", '"directory": "<directory>"')
+@command("search_files", "搜索文件", '"目录": "<directory>"')
 def search_files(directory: str) -> list[str]:
     """Search for files in a directory
 
@@ -239,10 +239,10 @@ def search_files(directory: str) -> list[str]:
 
 @command(
     "download_file",
-    "Download File",
-    '"url": "<url>", "filename": "<filename>"',
+    "下载文件",
+    '"url": "<url>", "文件名": "<filename>"',
     CFG.allow_downloads,
-    "Error: You do not have user authorization to download files locally.",
+    "错误: 你没有被授权下载文件到本地.",
 )
 def download_file(url, filename):
     """Downloads a file
@@ -252,7 +252,7 @@ def download_file(url, filename):
     """
     safe_filename = path_in_workspace(filename)
     try:
-        message = f"{Fore.YELLOW}Downloading file from {Back.LIGHTBLUE_EX}{url}{Back.RESET}{Fore.RESET}"
+        message = f"{Fore.YELLOW}下载文件中 {Back.LIGHTBLUE_EX}{url}{Back.RESET}{Fore.RESET}"
         with Spinner(message) as spinner:
             session = requests.Session()
             retry = Retry(total=3, backoff_factor=1, status_forcelist=[502, 503, 504])
@@ -277,8 +277,8 @@ def download_file(url, filename):
                         progress = f"{readable_file_size(downloaded_size)} / {readable_file_size(total_size)}"
                         spinner.update_message(f"{message} {progress}")
 
-            return f'Successfully downloaded and locally stored file: "{filename}"! (Size: {readable_file_size(total_size)})'
+            return f'成功下载文件并储存至: "{filename}"! (Size: {readable_file_size(total_size)})'
     except requests.HTTPError as e:
-        return f"Got an HTTP Error whilst trying to download file: {e}"
+        return f"下载文件过程中遇到一个HTTP错误: {e}"
     except Exception as e:
-        return "Error: " + str(e)
+        return "错误: " + str(e)

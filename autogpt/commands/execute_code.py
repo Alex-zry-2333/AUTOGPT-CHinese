@@ -23,15 +23,15 @@ def execute_python_file(filename: str) -> str:
         str: The output of the file
     """
     file = filename
-    print(f"Executing file '{file}' in workspace '{WORKSPACE_PATH}'")
+    print(f"执行文件 '{file}' 在workspace中 '{WORKSPACE_PATH}'")
 
     if not file.endswith(".py"):
-        return "Error: Invalid file type. Only .py files are allowed."
+        return "错误: 无效的文件格式. 只允许 .py 文件."
 
     file_path = path_in_workspace(file)
 
     if not os.path.isfile(file_path):
-        return f"Error: File '{file}' does not exist."
+        return f"错误: 文件 '{file}' 不存在."
 
     if we_are_running_in_a_docker_container():
         result = subprocess.run(
@@ -40,7 +40,7 @@ def execute_python_file(filename: str) -> str:
         if result.returncode == 0:
             return result.stdout
         else:
-            return f"Error: {result.stderr}"
+            return f"错误: {result.stderr}"
 
     try:
         client = docker.from_env()
@@ -51,9 +51,9 @@ def execute_python_file(filename: str) -> str:
         image_name = "python:3-alpine"
         try:
             client.images.get(image_name)
-            print(f"Image '{image_name}' found locally")
+            print(f"图片 '{image_name}' 在本地找到了")
         except ImageNotFound:
-            print(f"Image '{image_name}' not found locally, pulling from Docker Hub")
+            print(f"图片 '{image_name}' 在本地没有找到, 从Docker Hub中提取")
             # Use the low-level API to stream the pull response
             low_level_client = docker.APIClient()
             for line in low_level_client.pull(image_name, stream=True, decode=True):
@@ -91,22 +91,22 @@ def execute_python_file(filename: str) -> str:
 
     except docker.errors.DockerException as e:
         print(
-            "Could not run the script in a container. If you haven't already, please install Docker https://docs.docker.com/get-docker/"
+            "在container无法执行脚本. 如果没有安装docker，请安装 https://docs.docker.com/get-docker/"
         )
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"
 
     except Exception as e:
-        return f"Error: {str(e)}"
+        return f"错误: {str(e)}"
 
 
 @command(
     "execute_shell",
-    "Execute Shell Command, non-interactive commands only",
+    "执行Shell命令, 只允许非互动式命令",
     '"command_line": "<command_line>"',
     CFG.execute_local_commands,
-    "You are not allowed to run local shell commands. To execute"
-    " shell commands, EXECUTE_LOCAL_COMMANDS must be set to 'True' "
-    "in your config. Do not attempt to bypass the restriction.",
+    "你无法执行本地shell命令. 如需执行"
+    " shell 命令, EXECUTE_LOCAL_COMMANDS 需要设置为 'True' "
+    "在你的config中. 请不要试图绕过限制。",
 )
 def execute_shell(command_line: str) -> str:
     """Execute a shell command and return the output
@@ -120,16 +120,16 @@ def execute_shell(command_line: str) -> str:
 
     if not CFG.execute_local_commands:
         return (
-            "You are not allowed to run local shell commands. To execute"
-            " shell commands, EXECUTE_LOCAL_COMMANDS must be set to 'True' "
-            "in your config. Do not attempt to bypass the restriction."
+            "你无法执行本地shell命令. 如需执行"
+            " shell 命令, EXECUTE_LOCAL_COMMANDS 需要设置为 'True' "
+            "在你的config中. 请不要试图绕过限制。"
         )
     current_dir = os.getcwd()
     # Change dir into workspace if necessary
     if str(WORKSPACE_PATH) not in current_dir:
         os.chdir(WORKSPACE_PATH)
 
-    print(f"Executing command '{command_line}' in working directory '{os.getcwd()}'")
+    print(f"执行命令 '{command_line}' 中，在working directory '{os.getcwd()}'")
 
     result = subprocess.run(command_line, capture_output=True, shell=True)
     output = f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
@@ -141,12 +141,12 @@ def execute_shell(command_line: str) -> str:
 
 @command(
     "execute_shell_popen",
-    "Execute Shell Command, non-interactive commands only",
+    "执行Shell命令, 只允许非互动式命令",
     '"command_line": "<command_line>"',
     CFG.execute_local_commands,
-    "You are not allowed to run local shell commands. To execute"
-    " shell commands, EXECUTE_LOCAL_COMMANDS must be set to 'True' "
-    "in your config. Do not attempt to bypass the restriction.",
+    "你无法执行本地shell命令. 如需执行"
+    " shell 命令, EXECUTE_LOCAL_COMMANDS 需要设置为 'True' "
+    "在你的config中. 请不要试图绕过限制。",
 )
 def execute_shell_popen(command_line) -> str:
     """Execute a shell command with Popen and returns an english description
@@ -163,7 +163,7 @@ def execute_shell_popen(command_line) -> str:
     if str(WORKSPACE_PATH) not in current_dir:
         os.chdir(WORKSPACE_PATH)
 
-    print(f"Executing command '{command_line}' in working directory '{os.getcwd()}'")
+    print(f"执行命令 '{command_line}' 中，在working directory '{os.getcwd()}'")
 
     do_not_show_output = subprocess.DEVNULL
     process = subprocess.Popen(
@@ -174,7 +174,7 @@ def execute_shell_popen(command_line) -> str:
 
     os.chdir(current_dir)
 
-    return f"Subprocess started with PID:'{str(process.pid)}'"
+    return f"子进程已启动，PID 为:'{str(process.pid)}'"
 
 
 def we_are_running_in_a_docker_container() -> bool:

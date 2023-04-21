@@ -150,7 +150,7 @@ class Agent:
                             continue
                         break
                     elif console_input.lower() == "n":
-                        user_input = "退出"
+                        user_input = "EXIT"
                         break
                     else:
                         user_input = console_input

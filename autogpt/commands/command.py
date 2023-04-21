@@ -33,7 +33,7 @@ class Command:
 
     def __call__(self, *args, **kwargs) -> Any:
         if not self.enabled:
-            return f"Command '{self.name}' is disabled: {self.disabled_reason}"
+            return f"命令 '{self.name}' 被禁止: {self.disabled_reason}"
         return self.method(*args, **kwargs)
 
     def __str__(self) -> str:
@@ -64,7 +64,7 @@ class CommandRegistry:
         if command_name in self.commands:
             del self.commands[command_name]
         else:
-            raise KeyError(f"Command '{command_name}' not found in registry.")
+            raise KeyError(f"命令 '{command_name}' 在注册表中未找到.")
 
     def reload_commands(self) -> None:
         """Reloads all loaded command plugins."""
@@ -80,7 +80,7 @@ class CommandRegistry:
 
     def call(self, command_name: str, **kwargs) -> Any:
         if command_name not in self.commands:
-            raise KeyError(f"Command '{command_name}' not found in registry.")
+            raise KeyError(f"文件 '{command_name}' 在注册表中未找到.")
         command = self.commands[command_name]
         return command(**kwargs)
 

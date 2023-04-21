@@ -89,9 +89,9 @@ def google_official_search(query: str, num_results: int = 8) -> str | list[str]:
         ) == 403 and "invalid API key" in error_details.get("error", {}).get(
             "message", ""
         ):
-            return "Error: The provided Google API key is invalid or missing."
+            return "错误: 你提供的Google API key是错误的或者缺失."
         else:
-            return f"Error: {e}"
+            return f"错误: {e}"
     # google_result can be a list or a string depending on the search results
 
     # Return the list of search result URLs

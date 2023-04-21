@@ -11,7 +11,7 @@ load_dotenv()
 
 @command(
     "send_tweet",
-    "Send Tweet",
+    "发Tweet",
     '"tweet_text": "<tweet_text>"',
 )
 def send_tweet(tweet_text: str) -> str:
@@ -39,6 +39,6 @@ def send_tweet(tweet_text: str) -> str:
     # Send tweet
     try:
         api.update_status(tweet_text)
-        return "Tweet sent successfully!"
+        return "Tweet发送成功!"
     except tweepy.TweepyException as e:
-        return f"Error sending tweet: {e.reason}"
+        return f"发送tweet错误: {e.reason}"
