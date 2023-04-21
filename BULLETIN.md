@@ -1,2 +1,2 @@
-Welcome to Auto-GPT! We'll keep you informed of the latest news and features by printing messages here.
-If you don't wish to see this message, you can run Auto-GPT with the --skip-news flag
+欢迎来时Auto-GPT-Chinese! 应大家需要，我尝试将Auto-GPT基于当前版本进行汉化，目前是0.22版本，由于时间有限还有些瑕疵，但是基本满足使用需求。
+如果你不希望看到这个信息，也可以执行Auto-GPT中文版使用--skip-news 后缀

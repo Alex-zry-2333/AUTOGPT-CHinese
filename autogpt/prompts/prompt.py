@@ -88,13 +88,13 @@ def construct_main_ai_config() -> AIConfig:
         logger.typewriter_log("Goals:", Fore.GREEN, f"{config.ai_goals}")
     elif config.ai_name:
         logger.typewriter_log(
-            "Welcome back! ",
+            "您回来啦! ",
             Fore.GREEN,
-            f"Would you like me to return to being {config.ai_name}?",
+            f"您还希望继续使用 {config.ai_name}吗?",
             speak_text=True,
         )
         should_continue = clean_input(
-            f"""Continue with the last settings?
+            f"""继续使用上次的配置吗？?
 Name:  {config.ai_name}
 Role:  {config.ai_role}
 Goals: {config.ai_goals}
