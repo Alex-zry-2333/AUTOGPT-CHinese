@@ -42,8 +42,8 @@ def call_ai_function(
     messages: List[Message] = [
         {
             "role": "system",
-            "content": f"You are now the following python function: ```# {description}"
-            f"\n{function}```\n\nOnly respond with your `return` value.",
+            "content": f"你现在是以下的Python函数: ```# {description}"
+            f"\n{function}```\n\n只回复你的 `return` 值.",
         },
         {"role": "user", "content": args},
     ]
@@ -118,8 +118,8 @@ def create_chat_completion(
                 )
             if not warned_user:
                 logger.double_check(
-                    f"Please double check that you have setup a {Fore.CYAN + Style.BRIGHT}PAID{Style.RESET_ALL} OpenAI API Account. "
-                    + f"You can read more here: {Fore.CYAN}https://github.com/Significant-Gravitas/Auto-GPT#openai-api-keys-configuration{Fore.RESET}"
+                    f"请在此检查你已经使用了{Fore.CYAN + Style.BRIGHT}付费的{Style.RESET_ALL} OpenAI API账户. "
+                    + f"可以从这里了解更多: {Fore.CYAN}https://github.com/Significant-Gravitas/Auto-GPT#openai-api-keys-configuration{Fore.RESET}"
                 )
                 warned_user = True
         except APIError as e:
@@ -130,19 +130,19 @@ def create_chat_completion(
         if CFG.debug_mode:
             print(
                 f"{Fore.RED}Error: ",
-                f"API Bad gateway. Waiting {backoff} seconds...{Fore.RESET}",
+                f"API Bad gateway. 等待 {backoff} 秒...{Fore.RESET}",
             )
         time.sleep(backoff)
     if response is None:
         logger.typewriter_log(
-            "FAILED TO GET RESPONSE FROM OPENAI",
+            "从OPENAI获取回复失败",
             Fore.RED,
-            "Auto-GPT has failed to get a response from OpenAI's services. "
-            + f"Try running Auto-GPT again, and if the problem the persists try running it with `{Fore.CYAN}--debug{Fore.RESET}`.",
+            "Auto-GPT从OPENAI获取回复失败。 "
+            + f"尝试重新启动Auto-GPT, 如果问题持续出现请尝试执行 `{Fore.CYAN}--debug{Fore.RESET}`.",
         )
         logger.double_check()
         if CFG.debug_mode:
-            raise RuntimeError(f"Failed to get response after {num_retries} retries")
+            raise RuntimeError(f"经过 {num_retries} 次尝试，获取回复失败")
         else:
             quit(1)
     resp = response.choices[0].message["content"]
@@ -179,7 +179,7 @@ def create_embedding_with_ada(text) -> list:
                 raise
         if CFG.debug_mode:
             print(
-                f"{Fore.RED}Error: ",
-                f"API Bad gateway. Waiting {backoff} seconds...{Fore.RESET}",
+                f"{Fore.RED}错误: ",
+                f"API Bad gateway. 等待 {backoff} 秒...{Fore.RESET}",
             )
         time.sleep(backoff)

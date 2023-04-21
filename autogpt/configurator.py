@@ -45,23 +45,23 @@ def create_config(
     CFG.set_speak_mode(False)
 
     if debug:
-        logger.typewriter_log("Debug Mode: ", Fore.GREEN, "ENABLED")
+        logger.typewriter_log("Debug模式: ", Fore.GREEN, "开启")
         CFG.set_debug_mode(True)
 
     if continuous:
-        logger.typewriter_log("Continuous Mode: ", Fore.RED, "ENABLED")
+        logger.typewriter_log("持续模式: ", Fore.RED, "开启")
         logger.typewriter_log(
-            "WARNING: ",
+            "警告: ",
             Fore.RED,
-            "Continuous mode is not recommended. It is potentially dangerous and may"
-            " cause your AI to run forever or carry out actions you would not usually"
-            " authorise. Use at your own risk.",
+            "不推荐使用持续模式. 此模式存在风险，可能会让你的AI持续执行下去"
+            "并执行没有被你授权的指令动作"
+            "使用需谨慎，自负风险。",
         )
         CFG.set_continuous_mode(True)
 
         if continuous_limit:
             logger.typewriter_log(
-                "Continuous Limit: ", Fore.GREEN, f"{continuous_limit}"
+                "持续限额: ", Fore.GREEN, f"{continuous_limit}"
             )
             CFG.set_continuous_limit(continuous_limit)
 
@@ -70,15 +70,15 @@ def create_config(
         raise click.UsageError("--continuous-limit can only be used with --continuous")
 
     if speak:
-        logger.typewriter_log("Speak Mode: ", Fore.GREEN, "ENABLED")
+        logger.typewriter_log("语音模式: ", Fore.GREEN, "开启")
         CFG.set_speak_mode(True)
 
     if gpt3only:
-        logger.typewriter_log("GPT3.5 Only Mode: ", Fore.GREEN, "ENABLED")
+        logger.typewriter_log("GPT3.5模式: ", Fore.GREEN, "开启")
         CFG.set_smart_llm_model(CFG.fast_llm_model)
 
     if gpt4only:
-        logger.typewriter_log("GPT4 Only Mode: ", Fore.GREEN, "ENABLED")
+        logger.typewriter_log("GPT4模式: ", Fore.GREEN, "开启")
         CFG.set_fast_llm_model(CFG.smart_llm_model)
 
     if memory_type:
@@ -86,16 +86,16 @@ def create_config(
         chosen = memory_type
         if chosen not in supported_memory:
             logger.typewriter_log(
-                "ONLY THE FOLLOWING MEMORY BACKENDS ARE SUPPORTED: ",
+                "只支持一下记忆后台模式: ",
                 Fore.RED,
                 f"{supported_memory}",
             )
-            logger.typewriter_log("Defaulting to: ", Fore.YELLOW, CFG.memory_backend)
+            logger.typewriter_log("默认至: ", Fore.YELLOW, CFG.memory_backend)
         else:
             CFG.memory_backend = chosen
 
     if skip_reprompt:
-        logger.typewriter_log("Skip Re-prompt: ", Fore.GREEN, "ENABLED")
+        logger.typewriter_log("跳过重新指令: ", Fore.GREEN, "开启")
         CFG.skip_reprompt = True
 
     if ai_settings_file:
@@ -104,11 +104,11 @@ def create_config(
         # Validate file
         (validated, message) = utils.validate_yaml_file(file)
         if not validated:
-            logger.typewriter_log("FAILED FILE VALIDATION", Fore.RED, message)
+            logger.typewriter_log("文件校验失败", Fore.RED, message)
             logger.double_check()
             exit(1)
 
-        logger.typewriter_log("Using AI Settings File:", Fore.GREEN, file)
+        logger.typewriter_log("使用AI配置文件:", Fore.GREEN, file)
         CFG.ai_settings_file = file
         CFG.skip_reprompt = True
 
@@ -116,17 +116,17 @@ def create_config(
         CFG.selenium_web_browser = browser_name
 
     if allow_downloads:
-        logger.typewriter_log("Native Downloading:", Fore.GREEN, "ENABLED")
+        logger.typewriter_log("本地下载:", Fore.GREEN, "开启")
         logger.typewriter_log(
-            "WARNING: ",
+            "警告: ",
             Fore.YELLOW,
-            f"{Back.LIGHTYELLOW_EX}Auto-GPT will now be able to download and save files to your machine.{Back.RESET} "
-            + "It is recommended that you monitor any files it downloads carefully.",
+            f"{Back.LIGHTYELLOW_EX}Auto-GPT将开启下载并存储文件至你的本地电脑中。{Back.RESET} "
+            + "建议您仔细监控它下载的任何文件。",
         )
         logger.typewriter_log(
-            "WARNING: ",
+            "警告: ",
             Fore.YELLOW,
-            f"{Back.RED + Style.BRIGHT}ALWAYS REMEMBER TO NEVER OPEN FILES YOU AREN'T SURE OF!{Style.RESET_ALL}",
+            f"{Back.RED + Style.BRIGHT}请始终记住，永远不要打开您不确定的文件！{Style.RESET_ALL}",
         )
         CFG.allow_downloads = True
 

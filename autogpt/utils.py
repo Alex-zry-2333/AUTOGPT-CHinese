@@ -10,8 +10,8 @@ def clean_input(prompt: str = ""):
     try:
         return input(prompt)
     except KeyboardInterrupt:
-        print("You interrupted Auto-GPT")
-        print("Quitting...")
+        print("你打断了Auto-GPT")
+        print("退出中...")
         exit(0)
 
 
@@ -20,14 +20,14 @@ def validate_yaml_file(file: str):
         with open(file, encoding="utf-8") as fp:
             yaml.load(fp.read(), Loader=yaml.FullLoader)
     except FileNotFoundError:
-        return (False, f"The file {Fore.CYAN}`{file}`{Fore.RESET} wasn't found")
+        return (False, f"该文件 {Fore.CYAN}`{file}`{Fore.RESET} 没有找到")
     except yaml.YAMLError as e:
         return (
             False,
-            f"There was an issue while trying to read with your AI Settings file: {e}",
+            f"读取你的AI设置文件出现了错误: {e}",
         )
 
-    return (True, f"Successfully validated {Fore.CYAN}`{file}`{Fore.RESET}!")
+    return (True, f"验证成功 {Fore.CYAN}`{file}`{Fore.RESET}!")
 
 
 def readable_file_size(size, decimal_places=2):
@@ -73,5 +73,5 @@ def get_latest_bulletin() -> str:
 
     if new_bulletin and is_new_news:
         open("CURRENT_BULLETIN.md", "w", encoding="utf-8").write(new_bulletin)
-        return f" {Fore.RED}::UPDATED:: {Fore.CYAN}{new_bulletin}{Fore.RESET}"
+        return f" {Fore.RED}::已更新:: {Fore.CYAN}{new_bulletin}{Fore.RESET}"
     return current_bulletin

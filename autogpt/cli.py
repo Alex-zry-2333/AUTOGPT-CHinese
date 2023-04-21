@@ -3,7 +3,7 @@ import click
 
 
 @click.group(invoke_without_command=True)
-@click.option("-c", "--continuous", is_flag=True, help="Enable Continuous Mode")
+@click.option("-c", "--continuous", is_flag=True, help="启动持续模式")
 @click.option(
     "--skip-reprompt",
     "-y",
@@ -19,33 +19,33 @@ import click
     "-l",
     "--continuous-limit",
     type=int,
-    help="Defines the number of times to run in continuous mode",
+    help="定义持续模式中的持续次数",
 )
-@click.option("--speak", is_flag=True, help="Enable Speak Mode")
-@click.option("--debug", is_flag=True, help="Enable Debug Mode")
-@click.option("--gpt3only", is_flag=True, help="Enable GPT3.5 Only Mode")
-@click.option("--gpt4only", is_flag=True, help="Enable GPT4 Only Mode")
+@click.option("--speak", is_flag=True, help="开启语音模式")
+@click.option("--debug", is_flag=True, help="开启Debug模式")
+@click.option("--gpt3only", is_flag=True, help="开启GPT3.5模式")
+@click.option("--gpt4only", is_flag=True, help="开启GPT4模式")
 @click.option(
     "--use-memory",
     "-m",
     "memory_type",
     type=str,
-    help="Defines which Memory backend to use",
+    help="定义使用那种记忆后台",
 )
 @click.option(
     "-b",
     "--browser-name",
-    help="Specifies which web-browser to use when using selenium to scrape the web.",
+    help="指定使用哪个 Web 浏览器来使用 Selenium 抓取网络。",
 )
 @click.option(
     "--allow-downloads",
     is_flag=True,
-    help="Dangerous: Allows Auto-GPT to download files natively.",
+    help="危险: 允许Auto-GPT自动下载文件.",
 )
 @click.option(
     "--skip-news",
     is_flag=True,
-    help="Specifies whether to suppress the output of latest news on startup.",
+    help="指定是否在启动时抑制最新新闻的输出。",
 )
 @click.pass_context
 def main(
@@ -107,23 +107,22 @@ def main(
         if not cfg.skip_news:
             motd = get_latest_bulletin()
             if motd:
-                logger.typewriter_log("NEWS: ", Fore.GREEN, motd)
+                logger.typewriter_log("新闻: ", Fore.GREEN, motd)
             git_branch = get_current_git_branch()
             if git_branch and git_branch != "stable":
                 logger.typewriter_log(
-                    "WARNING: ",
+                    "警告: ",
                     Fore.RED,
-                    f"You are running on `{git_branch}` branch "
-                    "- this is not a supported branch.",
+                    f"你正在执行的是 `{git_branch}` 分支 "
+                    "- 这不是一个官方支持的分支。",
                 )
             if sys.version_info < (3, 10):
                 logger.typewriter_log(
-                    "WARNING: ",
+                    "警告: ",
                     Fore.RED,
-                    "You are running on an older version of Python. "
-                    "Some people have observed problems with certain "
-                    "parts of Auto-GPT with this version. "
-                    "Please consider upgrading to Python 3.10 or higher.",
+                    "你正在运行在低版本Python. "
+                    "有些人会在这个版本中使用Auto-GPT遇到问题"
+                    "请考虑升级到Python 3.10或更高版本。",
                 )
 
         cfg = Config()
@@ -151,19 +150,19 @@ def main(
         next_action_count = 0
         # Make a constant:
         triggering_prompt = (
-            "Determine which next command to use, and respond using the"
-            " format specified above:"
+            "确认下一步执行哪个命令, 并回复使用"
+            " 上述那种定义的格式:"
         )
         # Initialize memory and make sure it is empty.
         # this is particularly important for indexing and referencing pinecone memory
         memory = get_memory(cfg, init=True)
         logger.typewriter_log(
-            "Using memory of type:", Fore.GREEN, f"{memory.__class__.__name__}"
+            "使用的记忆模式:", Fore.GREEN, f"{memory.__class__.__name__}"
         )
-        logger.typewriter_log("Using Browser:", Fore.GREEN, cfg.selenium_web_browser)
+        logger.typewriter_log("使用浏览器:", Fore.GREEN, cfg.selenium_web_browser)
         system_prompt = ai_config.construct_full_prompt()
         if cfg.debug_mode:
-            logger.typewriter_log("Prompt:", Fore.GREEN, system_prompt)
+            logger.typewriter_log("命令:", Fore.GREEN, system_prompt)
         agent = Agent(
             ai_name=ai_name,
             memory=memory,
