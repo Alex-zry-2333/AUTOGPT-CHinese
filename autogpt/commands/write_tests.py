@@ -9,7 +9,7 @@ from autogpt.llm import call_ai_function
 
 @command(
     "write_tests",
-    "Write Tests",
+    "写入测试",
     '"code": "<full_code_string>", "focus": "<list_of_focus_areas>"',
 )
 def write_tests(code: str, focus: list[str]) -> str:
@@ -30,8 +30,7 @@ def write_tests(code: str, focus: list[str]) -> str:
     )
     args = [code, json.dumps(focus)]
     description_string = (
-        "Generates test cases for the existing code, focusing on"
-        " specific areas if required."
+        "如果需要，为现有代码生成测试用例，重点关注特定领域。"
     )
 
     return call_ai_function(function_string, args, description_string)

@@ -11,8 +11,8 @@ CFG = Config()
 
 @command(
     "read_audio_from_file",
-    "Convert Audio to text",
-    '"filename": "<filename>"',
+    "转换音频至文本",
+    '"文件名": "<filename>"',
     CFG.huggingface_audio_to_text_model,
     "Configure huggingface_audio_to_text_model.",
 )
@@ -48,7 +48,7 @@ def read_audio(audio: bytes) -> str:
 
     if api_token is None:
         raise ValueError(
-            "You need to set your Hugging Face API token in the config file."
+            "你需要在配置文件中配置你的Hugging Face API token."
         )
 
     response = requests.post(
@@ -58,4 +58,4 @@ def read_audio(audio: bytes) -> str:
     )
 
     text = json.loads(response.content.decode("utf-8"))["text"]
-    return f"The audio says: {text}"
+    return f"音频中说道: {text}"

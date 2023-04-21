@@ -8,7 +8,7 @@ from autogpt.llm import call_ai_function
 
 @command(
     "improve_code",
-    "Get Improved Code",
+    "获取优化代码",
     '"suggestions": "<list_of_suggestions>", "code": "<full_code_string>"',
 )
 def improve_code(suggestions: list[str], code: str) -> str:
@@ -28,8 +28,7 @@ def improve_code(suggestions: list[str], code: str) -> str:
     )
     args = [json.dumps(suggestions), code]
     description_string = (
-        "Improves the provided code based on the suggestions"
-        " provided, making no other changes."
+        "基于优化建议提供优化后的代码，不要做其他修改."
     )
 
     return call_ai_function(function_string, args, description_string)
