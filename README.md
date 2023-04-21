@@ -10,7 +10,7 @@
 这个项目是基于Auto-GPT原作者的0.22版本，应大家要求，我快速制作了中文的汉化版本，基本运行顺利，还有些小瑕疵，会不断更新修改，欢迎大家关注，还请大家多支持！下面的内容就不过多翻译了，保持与原作者一致！
 如果大家希望支持我，还请给我点个小星星，谢谢！也可以通过微信与我们交流
 
-![微信](https://www.notion.so/hossie/828a0874e1c2472887859437eaf9cf00?pvs=4#dd5a44b3d0d449ad92215c24db9d8517.png)
+![微信](https://github.com/RealHossie/Auto-GPT-Chinese/blob/master/docs/imgs/截屏2023-04-22%2001.36.22.png?raw=true)
 
 </div>
 
