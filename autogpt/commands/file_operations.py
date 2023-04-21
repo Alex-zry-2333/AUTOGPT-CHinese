@@ -137,7 +137,7 @@ def ingest_file(
         print(f"注入文件错误 '{filename}': {str(e)}")
 
 
-@command("write_to_file", "写入文件", '"文件名": "<filename>", "text": "<text>"')
+@command("write_to_file", "写入文件", '"filename": "<filename>", "text": "<text>"')
 def write_to_file(filename: str, text: str) -> str:
     """Write text to a file
 
@@ -164,7 +164,7 @@ def write_to_file(filename: str, text: str) -> str:
 
 
 @command(
-    "append_to_file", "追加至文件", '"文件名": "<filename>", "text": "<text>"'
+    "append_to_file", "追加至文件", '"filename": "<filename>", "text": "<text>"'
 )
 def append_to_file(filename: str, text: str, shouldLog: bool = True) -> str:
     """Append text to a file
@@ -189,7 +189,7 @@ def append_to_file(filename: str, text: str, shouldLog: bool = True) -> str:
         return f"错误: {str(e)}"
 
 
-@command("delete_file", "删除文件", '"文件名": "<filename>"')
+@command("delete_file", "删除文件", '"filename": "<filename>"')
 def delete_file(filename: str) -> str:
     """Delete a file
 
@@ -240,7 +240,7 @@ def search_files(directory: str) -> list[str]:
 @command(
     "download_file",
     "下载文件",
-    '"url": "<url>", "文件名": "<filename>"',
+    '"url": "<url>", "filename": "<filename>"',
     CFG.allow_downloads,
     "错误: 你没有被授权下载文件到本地.",
 )
