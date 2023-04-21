@@ -29,7 +29,7 @@ CFG = Config()
 @command(
     "browse_website",
     "浏览网页",
-    '"url": "<url>", "问题": "<what_you_want_to_find_on_website>"',
+    '"url": "<url>", "question": "<what_you_want_to_find_on_website>"',
 )
 def browse_website(url: str, question: str) -> tuple[str, WebDriver]:
     """Browse a website and return the answer and links to the user

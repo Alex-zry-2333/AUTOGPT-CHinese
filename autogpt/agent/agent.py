@@ -205,9 +205,9 @@ class Agent:
                     self.next_action_count -= 1
             if command_name != "do_nothing":
                 memory_to_add = (
-                    f"Assistant Reply: {assistant_reply} "
-                    f"\nResult: {result} "
-                    f"\nHuman Feedback: {user_input} "
+                    f"助手回复: {assistant_reply} "
+                    f"\n结果: {result} "
+                    f"\n人类反馈: {user_input} "
                 )
 
                 self.memory.add(memory_to_add)

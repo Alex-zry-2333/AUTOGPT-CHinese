@@ -210,7 +210,7 @@ def delete_file(filename: str) -> str:
         return f"错误: {str(e)}"
 
 
-@command("search_files", "搜索文件", '"目录": "<directory>"')
+@command("search_files", "搜索文件", '"directory": "<directory>"')
 def search_files(directory: str) -> list[str]:
     """Search for files in a directory
 
