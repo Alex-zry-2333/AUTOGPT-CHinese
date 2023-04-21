@@ -1,61 +1,23 @@
-# Auto-GPT: An Autonomous GPT-4 Experiment
-[![Unit Tests](https://img.shields.io/github/actions/workflow/status/Significant-Gravitas/Auto-GPT/ci.yml?label=unit%20tests)](https://github.com/Significant-Gravitas/Auto-GPT/actions/workflows/ci.yml)
-[![Discord Follow](https://dcbadge.vercel.app/api/server/autogpt?style=flat)](https://discord.gg/autogpt)
-[![GitHub Repo stars](https://img.shields.io/github/stars/Significant-Gravitas/auto-gpt?style=social)](https://github.com/Significant-Gravitas/Auto-GPT/stargazers)
-[![Twitter Follow](https://img.shields.io/twitter/follow/siggravitas?style=social)](https://twitter.com/SigGravitas)
-
-## 💡 Get help - [Q&A](https://github.com/Significant-Gravitas/Auto-GPT/discussions/categories/q-a) or [Discord 💬](https://discord.gg/autogpt)
-
-<hr/>
-
-### 🔴 🔴 🔴  Urgent: USE `stable` not `master`  🔴 🔴 🔴
-
-**Download the latest `stable` release from here: https://github.com/Significant-Gravitas/Auto-GPT/releases/latest.**
-The `master` branch may often be in a **broken** state.
-
+# Auto-GPT中文版
+### Youtube频道：https://www.youtube.com/@Hossie
+##
 <hr/>
 
 
-Auto-GPT is an experimental open-source application showcasing the capabilities of the GPT-4 language model. This program, driven by GPT-4, chains together LLM "thoughts", to autonomously achieve whatever goal you set. As one of the first examples of GPT-4 running fully autonomously, Auto-GPT pushes the boundaries of what is possible with AI.
-
-<h2 align="center"> Demo April 16th 2023 </h2>
-
-https://user-images.githubusercontent.com/70048414/232352935-55c6bf7c-3958-406e-8610-0913475a0b05.mp4
-
-Demo made by <a href=https://twitter.com/BlakeWerlinger>Blake Werlinger</a>
-
-<h2 align="center"> 💖 Help Fund Auto-GPT's Development 💖</h2>
-<p align="center">
-If you can spare a coffee, you can help to cover the costs of developing Auto-GPT and help push the boundaries of fully autonomous AI!
-Your support is greatly appreciated.
-Development of this free, open-source project is made possible by all the <a href="https://github.com/Significant-Gravitas/Auto-GPT/graphs/contributors">contributors</a> and <a href="https://github.com/sponsors/Torantulino">sponsors</a>. If you'd like to sponsor this project and have your avatar or company logo appear below <a href="https://github.com/sponsors/Torantulino">click here</a>.
-</p>
-
+<h2 align="center"> 💖 大家好 💖</h2>
 
 <p align="center">
-<div align="center" class="logo-container">
+这个项目是基于Auto-GPT原作者的0.22版本，应大家要求，我快速制作了中文的汉化版本，基本运行顺利，还有些小瑕疵，会不断更新修改，欢迎大家关注，还请大家多支持！下面的内容就不过多翻译了，保持与原作者一致！
+如果大家希望支持我，还请给我点个小星星，谢谢！
 
-<a href="https://www.zilliz.com/"><img src="https://user-images.githubusercontent.com/22963551/233313799-74105a64-258d-4f99-8e50-1d7d823a7ba6.png" height="40px" alt="Zilliz" /></a>
-<a href="https://roost.ai"><img src="https://user-images.githubusercontent.com/22963551/233059778-055502b4-fa2e-4334-82b6-9a12252fd9e1.png" height="40px" alt="Roost.AI" /></a>
-<a href="https://nuclei.ai/"><img src="https://user-images.githubusercontent.com/22963551/233059785-28ce2549-62de-42c2-925a-c0aa08aef6bd.png" height="40px" alt="NucleiAI" /></a>
-<a href="https://www.algohash.org/"><img src="https://user-images.githubusercontent.com/22963551/233061211-9a9ec216-9fc0-46fd-a124-bf951057207c.png" height="40px" alt="Algohash" /></a>
-<a href="https://www.typingmind.com/?utm_source=autogpt"><img src="https://user-images.githubusercontent.com/22963551/233202971-61e77209-58a0-47d9-9f7e-dd081111437b.png" height="40px" alt="TypingMind" /></a>
 </div>
 
 </br>
 </br>
- 
-## 🚀 Features
 
-- 🌐 Internet access for searches and information gathering
-- 💾 Long-Term and Short-Term memory management
-- 🧠 GPT-4 instances for text generation
-- 🔗 Access to popular websites and platforms
-- 🗃️ File storage and summarization with GPT-3.5
+## 📋 Requirement
 
-## 📋 Requirements
-
-- Environment (pick one)
+- Enviroment (pick one)
   - [VSCode + devcontainer](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers): It has been configured in the .devcontainer folder and can be used directly
   - Docker
   - Python 3.10 or later (instructions: [for Windows](https://www.tutorialspoint.com/how-to-install-python-in-windows))
@@ -83,7 +45,7 @@ _To execute the following commands, open a CMD, Bash, or Powershell window by na
    you can download the [latest stable release](https://github.com/Significant-Gravitas/Auto-GPT/releases/latest) (`Source code (zip)`, bottom of the page).
 
     ```bash
-    git clone -b stable https://github.com/Significant-Gravitas/Auto-GPT.git
+    git clone https://github.com/RealHossie/Auto-GPT-Chinese.git
     ```
 
 3. Navigate to the directory where the repository was downloaded
@@ -512,8 +474,8 @@ Stay up-to-date with the latest news, updates, and insights about Auto-GPT by fo
 We look forward to connecting with you and hearing your thoughts, ideas, and experiences with Auto-GPT. Join us on Twitter and let's explore the future of AI together!
 
 <p align="center">
-  <a href="https://star-history.com/#Torantulino/auto-gpt&Date">
-    <img src="https://api.star-history.com/svg?repos=Torantulino/auto-gpt&type=Date" alt="Star History Chart">
+  <a href="https://star-history.com/#Realhossie/auto-gpt-chinese&Date">
+    <img src="https://api.star-history.com/svg?repos=Realhossie/auto-gpt-chinese&type=Date" alt="Star History Chart">
   </a>
 </p>
 
