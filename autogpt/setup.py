@@ -54,7 +54,7 @@ def prompt_user() -> AIConfig:
     )
     ai_role = utils.clean_input(f"{ai_name} 是: ")
     if ai_role == "":
-        ai_role = "a一个自动帮助你策划与经营业务的人工智能帮手，目标专注于提升你的净资产。"
+        ai_role = "一个自动帮助你策划与经营业务的人工智能帮手，目标专注于提升你的净资产。"
 
     # Enter up to 5 goals for the AI
     logger.typewriter_log(
