@@ -15,63 +15,59 @@ def prompt_user() -> AIConfig:
     ai_name = ""
     # Construct the prompt
     logger.typewriter_log(
-        "Welcome to Auto-GPT! ",
+        "欢迎使用RealHossie的Auto-GPT中文版！",
         Fore.GREEN,
-        "run with '--help' for more information.",
+        "执行后缀 '--help' 获取更多信息。",
         speak_text=True,
     )
 
     logger.typewriter_log(
-        "Create an AI-Assistant:",
+        "新建一个AI助手:",
         Fore.GREEN,
-        "Enter the name of your AI and its role below. Entering nothing will load"
-        " defaults.",
+        "给你AI助手起一个名字和赋予它一个角色，什么都不输入将使用默认值。",
         speak_text=True,
     )
 
     # Get AI Name from User
     logger.typewriter_log(
-        "Name your AI: ", Fore.GREEN, "For example, 'Entrepreneur-GPT'"
+        "你AI的名字叫: ", Fore.GREEN, "例如, '企业家-GPT'"
     )
-    ai_name = utils.clean_input("AI Name: ")
+    ai_name = utils.clean_input("AI名字: ")
     if ai_name == "":
-        ai_name = "Entrepreneur-GPT"
+        ai_name = "企业家-GPT"
 
     logger.typewriter_log(
-        f"{ai_name} here!", Fore.LIGHTBLUE_EX, "I am at your service.", speak_text=True
+        f"{ai_name} 在这儿呢!", Fore.LIGHTBLUE_EX, "我听从您的吩咐。", speak_text=True
     )
 
     # Get AI Role from User
     logger.typewriter_log(
-        "Describe your AI's role: ",
+        "描述你AI的角色: ",
         Fore.GREEN,
-        "For example, 'an AI designed to autonomously develop and run businesses with"
-        " the sole goal of increasing your net worth.'",
+        "例如, '一个自动帮助你策划与经营业务的人工智能帮手，目标专注于提升你的净资产。'",
     )
-    ai_role = utils.clean_input(f"{ai_name} is: ")
+    ai_role = utils.clean_input(f"{ai_name} 是: ")
     if ai_role == "":
-        ai_role = "an AI designed to autonomously develop and run businesses with the"
-        " sole goal of increasing your net worth."
+        ai_role = "a一个自动帮助你策划与经营业务的人工智能帮手，目标专注于提升你的净资产。"
 
     # Enter up to 5 goals for the AI
     logger.typewriter_log(
-        "Enter up to 5 goals for your AI: ",
+        "为你的AI定义最多5个目标: ",
         Fore.GREEN,
-        "For example: \nIncrease net worth, Grow Twitter Account, Develop and manage"
-        " multiple businesses autonomously'",
+        "例如: \n提升净资产, 增长Twitter账户, 自动化策划与管理多条业务线'",
     )
-    print("Enter nothing to load defaults, enter nothing when finished.", flush=True)
+    print("什么都不输入将加载默认值，输入结束后直接按回车。", flush=True)
     ai_goals = []
     for i in range(5):
-        ai_goal = utils.clean_input(f"{Fore.LIGHTBLUE_EX}Goal{Style.RESET_ALL} {i+1}: ")
+        ai_goal = utils.clean_input(f"{Fore.LIGHTBLUE_EX}目标{Style.RESET_ALL} {i+1}: ")
         if ai_goal == "":
             break
         ai_goals.append(ai_goal)
     if not ai_goals:
         ai_goals = [
-            "Increase net worth",
-            "Grow Twitter Account",
-            "Develop and manage multiple businesses autonomously",
+            "提升净资产",
+            "增长Twitter账户",
+            "自动化策划与管理多条业务线",
         ]
 
     return AIConfig(ai_name, ai_role, ai_goals)
