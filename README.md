@@ -17,6 +17,11 @@
 </br>
 </br>
 
+<p align="center">
+  <a href="https://star-history.com/#Realhossie/auto-gpt-chinese&Date">
+    <img src="https://api.star-history.com/svg?repos=Realhossie/auto-gpt-chinese&type=Date" alt="Star History Chart">
+  </a>
+</p>
 ## 📋 Requirement
 
 - Enviroment (pick one)
@@ -467,11 +472,7 @@ As an autonomous experiment, Auto-GPT may generate content or take actions that 
 By using Auto-GPT, you agree to indemnify, defend, and hold harmless the developers, contributors, and any affiliated parties from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from your use of this software or your violation of these terms.
 
 
-<p align="center">
-  <a href="https://star-history.com/#Realhossie/auto-gpt-chinese&Date">
-    <img src="https://api.star-history.com/svg?repos=Realhossie/auto-gpt-chinese&type=Date" alt="Star History Chart">
-  </a>
-</p>
+
 
 ## Run tests
 
