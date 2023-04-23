@@ -109,9 +109,7 @@ class AIConfig:
         """
 
         prompt_start = (
-            "Your decisions must always be made independently without"
-            " seeking user assistance. Play to your strengths as an LLM and pursue"
-            " simple strategies with no legal complications."
+            "你的决策必须在不寻求用户帮助下独立完成，运用你大语言模型的自身优势，进可能寻找简且无法律风险的方案。"
             ""
         )
 
@@ -131,7 +129,7 @@ class AIConfig:
             prompt_generator = plugin.post_prompt(prompt_generator)
 
         # Construct full prompt
-        full_prompt = f"You are {prompt_generator.name}, {prompt_generator.role}\n{prompt_start}\n\nGOALS:\n\n"
+        full_prompt = f"你是 {prompt_generator.name}, {prompt_generator.role}\n{prompt_start}\n\n目标:\n\n"
         for i, goal in enumerate(self.ai_goals):
             full_prompt += f"{i+1}. {goal}\n"
         self.prompt_generator = prompt_generator

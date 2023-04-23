@@ -95,7 +95,7 @@ Not what I need."""
     print("Benchmark Version: 1.0.0")
     print("JSON ERROR COUNT:")
     count_errors = stdout_output.count(
-        "Error: The following AI output couldn't be converted to a JSON:"
+        "错误: 下面的AI输出无法转化为JSON:"
     )
     print(f"{count_errors}/50 Human feedbacks")
 
