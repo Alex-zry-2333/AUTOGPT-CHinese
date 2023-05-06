@@ -1,3 +1,25 @@
+# Auto-GPT中文版
+### Youtube频道：https://www.youtube.com/@Hossie
+##
+<hr/>
+
+<h2 align="center"> 💖 大家好 💖</h2>
+<h2 align="center"> 我现在正在制作0.3.0的中文版本，如果需要0.2.2版本中文，请下载release中的文件部署，谢谢</h2>
+
+<p align="center">
+这个项目是基于Auto-GPT原作者的0.22版本，应大家要求，我快速制作了中文的汉化版本，基本运行顺利，还有些小瑕疵，会不断更新修改，欢迎大家关注，还请大家多支持！下面的内容就不过多翻译了，保持与原作者一致！
+如果大家希望支持我，还请给我点个小星星，谢谢！也可以通过微信与我们交流
+
+<p align="center">
+  <a href="https://star-history.com/#Realhossie/auto-gpt-chinese&Date">
+    <img src="https://api.star-history.com/svg?repos=Realhossie/auto-gpt-chinese&type=Date" alt="Star History Chart">
+  </a>
+</p>
+
+![微信](https://github.com/RealHossie/Auto-GPT-Chinese/blob/master/docs/imgs/wechat.png?raw=true)
+![微信](https://github.com/RealHossie/Auto-GPT-Chinese/blob/master/docs/imgs/wechat.png?raw=true)
+
+
 # Auto-GPT: An Autonomous GPT-4 Experiment
 [![Official Website](https://img.shields.io/badge/Official%20Website-agpt.co-blue?style=flat&logo=world&logoColor=white)](https://agpt.co)
 [![Unit Tests](https://img.shields.io/github/actions/workflow/status/Significant-Gravitas/Auto-GPT/ci.yml?label=unit%20tests)](https://github.com/Significant-Gravitas/Auto-GPT/actions/workflows/ci.yml)
