@@ -5,7 +5,16 @@
 
 <h2 align="center"> 💖 大家好 💖</h2>
 
- 这个项目是基于Auto-GPT中文版 原作者的0.3版本，因为我本身已经fork 了AuTOGPT主分支，所以只能重新克隆新项目了。
+ 这个项目是基于 **Auto-GPT中文版** 原作者RealHossie 的 0.3版本 [项目路径点这里](https://github.com/RealHossie/Auto-GPT-Chinese)，因为我本身已经fork 了AuTOGPT主分支，所以只能重新克隆新项目了。
+ 
+ ## 学习目的：
+ 1. 在GitPod上部署运行。
+ 2. 尝试自己实现中文化。
+ 
+ ## 目前遇到过的问题：
+ 1. 云端部署时存在的Python版本不兼容问题
+ 2. AutoGPT本身的加载时更新依赖库安装路径中不包含云端自己的安装路径
+ 3. 云端环境本身的安装Python库动态库损坏。
  
  
 
